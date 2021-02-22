@@ -1,0 +1,17 @@
+{
+  "name": "UnitTesting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm i -D @types/node",
+    "test": "jest --color"
+  },
+  "author": "Osid Abu-Alrub",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.31",
+    "jest": "^26.6.3"
+  }
+}

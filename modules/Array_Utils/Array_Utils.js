@@ -1,13 +1,13 @@
 /* UTILITY FUNCTIONS */
 function baseIterator(array,predicate,func)
 {
-    isValidArg(array, predicate);
+    isValidArgs(array, predicate);
     const returnArray = [];
     for(let index = 0 ; index < array.length ; index++) func(returnArray,index);
     return returnArray;
 }
 
-function isValidArg(array,predicate)
+function isValidArgs(array,predicate)
 {
     if(!Array.isArray(array)) throw new Error("First argument must be an array");
     if(!(typeof predicate === 'function')) throw new Error("Second argument must be a function");
@@ -34,5 +34,6 @@ const filter =function filter(array,predicate)
 
 module.exports = {
     map,
-    filter
+    filter,
+    isValidArgs
 };

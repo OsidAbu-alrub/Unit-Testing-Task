@@ -38,10 +38,18 @@ const some = function some(array,predicate)
     return false;
 }
 
+const every = function every(array,predicate){
+    for(let index in array){
+        if(!predicate(array[index],index,array)) return false;
+    }
+    return true;
+}
+
 
 module.exports = {
     map,
     filter,
     some,
+    every,
     isValidArgs
 };

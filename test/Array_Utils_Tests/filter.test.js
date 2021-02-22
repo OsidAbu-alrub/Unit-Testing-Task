@@ -1,4 +1,4 @@
-const { filter } = require('./../../modules/Array_Utils/filter');
+const { filter } = require('./../../modules/Array_Utils/Array_Utils.js');
 
 test("returned array must have all elements that are greater than 5",()=>{
     const testArray = [1,2,3,4,5,6,7,8,9];

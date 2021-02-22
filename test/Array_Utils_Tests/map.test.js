@@ -1,4 +1,4 @@
-const { map } = require('./../../modules/Array_Utils/map');
+const { map } = require('./../../modules/Array_Utils/Array_Utils.js');
 
 test("each element in returned array is incremented by one",()=>{
     const testArray = [1,2,3,4,5,6,7,8,9];

@@ -56,6 +56,15 @@ const find = function find(array,predicate)
     return undefined;
 }
 
+const findIndex = function findIndex(array,predicate)
+{
+    isValidArgs(array, predicate);
+    for(let i = 0 ; i < array.length ; i++){
+        if(predicate(array[i],i,array)) return i;
+    }
+    return -1;
+}
+
 
 module.exports = {
     map,
@@ -63,5 +72,6 @@ module.exports = {
     some,
     every,
     find,
+    findIndex,
     isValidArgs
 };

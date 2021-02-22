@@ -1,31 +1,35 @@
-const map =function map(array,predicate)
+/* UTILITY FUNCTIONS */
+function baseIterator(array,predicate,func)
+{
+    isValidArg(array, predicate);
+    const returnArray = [];
+    for(let index = 0 ; index < array.length ; index++) func(returnArray,index);
+    return returnArray;
+}
+
+function isValidArg(array,predicate)
 {
     if(!Array.isArray(array)) throw new Error("First argument must be an array");
     if(!(typeof predicate === 'function')) throw new Error("Second argument must be a function");
+}
+/* UTILITY FUNCTIONS */
 
-    const returnArray = [];
-    for(let i = 0 ; i < array.length ; i++){
-        returnArray.push(predicate(array[i],index,array));
-    }
-
-    return returnArray;
+const map =function map(array,predicate)
+{
+    return baseIterator(array,predicate,
+        (returnArray,index) => returnArray.push(predicate(array[index],index,array))
+    );
 }
 
 const filter =function filter(array,predicate)
 {
-    if(!Array.isArray(array)) throw new Error("First argument must be an array");
-    if(!(typeof predicate === 'function')) throw new Error("Second argument must be a function");
-
-    const filterArray = [];
-    for(let index in array){
-        if(predicate(array[index],index,array))
-            filterArray.push(array[index]);
-    }
-
-    return filterArray;
+    return baseIterator(array,predicate,
+        (returnArray,index) => 
+        {
+            if(predicate(array[index],index,array)) returnArray.push(array[index]);
+        }
+    );
 }
-
-
 
 
 module.exports = {

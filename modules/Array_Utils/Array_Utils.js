@@ -33,16 +33,27 @@ const filter =function filter(array,predicate)
 
 const some = function some(array,predicate)
 {
+    isValidArgs(array, predicate);
     for(let i = 0 ; i < array.length ; i++) 
         if(predicate(array[i],i,array)) return true;
     return false;
 }
 
 const every = function every(array,predicate){
+    isValidArgs(array, predicate);
     for(let index in array){
         if(!predicate(array[index],index,array)) return false;
     }
     return true;
+}
+
+const find = function find(array,predicate)
+{
+    isValidArgs(array, predicate);
+    for(let i = 0 ; i < array.length ; i++){
+        if(predicate(array[i],i,array)) return array[i];
+    }
+    return undefined;
 }
 
 
@@ -51,5 +62,6 @@ module.exports = {
     filter,
     some,
     every,
+    find,
     isValidArgs
 };

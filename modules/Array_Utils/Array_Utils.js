@@ -56,11 +56,9 @@ const every = function every(array,predicate){
 
 const find = function find(array,predicate)
 {
-    isValidArgs(array, predicate);
-    for(let i = 0 ; i < array.length ; i++){
-        if(predicate(array[i],i,array)) return array[i];
-    }
-    return undefined;
+    return baseIteratorValue(array, predicate, undefined, (value,index) =>
+        (predicate(value,index,array)) ? {data:array[index],done:true} : {data:null,done:false}
+    );
 }
 
 const findIndex = function findIndex(array,predicate)

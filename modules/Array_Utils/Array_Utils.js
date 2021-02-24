@@ -85,6 +85,17 @@ const last = function last(array){
      )
 }
 
+const groupBy = function groupBy(array,predicate){
+    const returnObject = {};
+    return baseIteratorValue(array, predicate, returnObject, (value,index) => {
+        let result = predicate(value,index,array) + "";
+        if(result in returnObject) {returnObject[result].push(value)}
+        else {returnObject[result] = [value]}
+        return {data: returnObject,done:false}
+    })
+    
+}
+
 
 module.exports = {
     map,
@@ -96,5 +107,6 @@ module.exports = {
     flatten,
     reverse,
     last,
+    groupBy,
     isValidArgs
 };

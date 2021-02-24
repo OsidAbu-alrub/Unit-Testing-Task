@@ -44,16 +44,14 @@ const filter =function filter(array,predicate)
 const some = function some(array,predicate)
 {
     return baseIteratorValue(array, predicate, false,
-        (value,index) => predicate(value,index,array) ?  {data: true, done: true} : {data: false, done: false}
+        (value,index) => predicate(value,index,array) ?  {data: true, done: true} : {data: null, done: false}
     );  
 }
 
 const every = function every(array,predicate){
-    isValidArgs(array, predicate);
-    for(let index in array){
-        if(!predicate(array[index],index,array)) return false;
-    }
-    return true;
+    return baseIteratorValue(array, predicate, true, (value,index) =>
+        (!predicate(value,index,array)) ? {data:false,done:true} : {data:null ,done:false}
+    );
 }
 
 const find = function find(array,predicate)

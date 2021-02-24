@@ -41,6 +41,13 @@ const filter =function filter(array,predicate)
     );
 }
 
+const flatten = function flatten(array){
+    return baseIterator(array, () => {} , (returnArray,index) =>{
+        if(Array.isArray(array[index])) returnArray.push(...array[index]);
+        else returnArray.push(array[index]);
+    });
+}
+
 const some = function some(array,predicate)
 {
     return baseIteratorValue(array, predicate, false,
@@ -68,11 +75,8 @@ const findIndex = function findIndex(array,predicate)
     )
 }
 
-const flatten = function flatten(array){
-    return baseIterator(array, () => {} , (returnArray,index) =>{
-        if(Array.isArray(array[index])) returnArray.push(...array[index]);
-        else returnArray.push(array[index]);
-    });
+const reverse = function reverse(array){
+    return baseIterator(array, () =>{} , (returnArray,index) => returnArray.unshift(array[index]));
 }
 
 
@@ -84,5 +88,6 @@ module.exports = {
     find,
     findIndex,
     flatten,
+    reverse,
     isValidArgs
 };

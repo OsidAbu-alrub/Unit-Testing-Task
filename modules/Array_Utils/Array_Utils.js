@@ -79,6 +79,12 @@ const reverse = function reverse(array){
     return baseIterator(array, () =>{} , (returnArray,index) => returnArray.unshift(array[index]));
 }
 
+const last = function last(array){
+    return baseIteratorValue(array, () =>{}, [], () =>
+        (array.length != 0) ? {data:array[array.length - 1],done:true} : {data:[],done:true}
+     )
+}
+
 
 module.exports = {
     map,
@@ -89,5 +95,6 @@ module.exports = {
     findIndex,
     flatten,
     reverse,
+    last,
     isValidArgs
 };

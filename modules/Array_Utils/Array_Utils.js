@@ -7,6 +7,16 @@ function baseIterator(array,predicate,func)
     return returnArray;
 }
 
+function baseIteratorValue(array,predicate,fallbackVal,func)
+{
+    isValidArgs(array, predicate);
+    for(let i = 0 ; i < array.length ; i++){
+        let {data,done} = func(array[i],i);
+        if(done) return data; 
+    }
+    return fallbackVal;
+}
+
 function isValidArgs(array,predicate)
 {
     if(!Array.isArray(array)) throw new Error("First argument must be an array");
@@ -33,10 +43,9 @@ const filter =function filter(array,predicate)
 
 const some = function some(array,predicate)
 {
-    isValidArgs(array, predicate);
-    for(let i = 0 ; i < array.length ; i++) 
-        if(predicate(array[i],i,array)) return true;
-    return false;
+    return baseIteratorValue(array, predicate, false,
+        (value,index) => predicate(value,index,array) ?  {data: true, done: true} : {data: false, done: false}
+    );  
 }
 
 const every = function every(array,predicate){

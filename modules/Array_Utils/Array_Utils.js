@@ -63,11 +63,9 @@ const find = function find(array,predicate)
 
 const findIndex = function findIndex(array,predicate)
 {
-    isValidArgs(array, predicate);
-    for(let i = 0 ; i < array.length ; i++){
-        if(predicate(array[i],i,array)) return i;
-    }
-    return -1;
+    return baseIteratorValue(array, predicate, -1, (value,index) =>
+        (predicate(value,index,array)) ? {data:index,done:true} : {data:null,done:false}
+    )
 }
 
 

@@ -57,7 +57,7 @@ const every = function every(array,predicate){
 const find = function find(array,predicate)
 {
     return baseIteratorValue(array, predicate, undefined, (value,index) =>
-        (predicate(value,index,array)) ? {data:array[index],done:true} : {data:null,done:false}
+        (predicate(value,index,array)) ? {data:value,done:true} : {data:null,done:false}
     );
 }
 

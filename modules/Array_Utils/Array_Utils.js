@@ -68,6 +68,13 @@ const findIndex = function findIndex(array,predicate)
     )
 }
 
+const flatten = function flatten(array){
+    return baseIterator(array, () => {} , (returnArray,index) =>{
+        if(Array.isArray(array[index])) returnArray.push(...array[index]);
+        else returnArray.push(array[index]);
+    });
+}
+
 
 module.exports = {
     map,
@@ -76,5 +83,6 @@ module.exports = {
     every,
     find,
     findIndex,
+    flatten,
     isValidArgs
 };

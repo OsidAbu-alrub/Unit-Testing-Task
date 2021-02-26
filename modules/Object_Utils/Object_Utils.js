@@ -25,9 +25,19 @@ const values = function values(obj){
 }
 
 
+const entries = function entries(obj){
+    isValidObj(obj);
+    const returnArray = [];
+    for(let key in obj){
+        returnArray.push([key,obj[key]]);
+    }
+    return returnArray;
+}
+
+
 module.exports = {
     keys,
     values,
     isValidObj,
-
+    entries,
 }

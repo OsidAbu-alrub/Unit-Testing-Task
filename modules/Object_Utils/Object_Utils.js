@@ -34,10 +34,24 @@ const entries = function entries(obj){
     return returnArray;
 }
 
+const mayBe = function mayBe(obj,keyString){
+    isValidObj(obj);
+    const keyArray = keyString.split('.');
+    let result = obj;
+    for(let key of keyArray){
+        if(!(key in result)){
+            return undefined;
+        }
+        result = result[key];
+    }
+    return result;
+}
+
 
 module.exports = {
     keys,
     values,
     isValidObj,
     entries,
+    mayBe,
 }

@@ -1,4 +1,13 @@
+function isValidObj(obj){
+    if(typeof obj !== 'object' || Array.isArray(obj) || obj === null)
+    {
+        throw new Error('Must pass valid object! ({key:value})');
+    }
+    return true;
+}
+
 const keys = function keys(obj){
+    isValidObj(obj);
     const returnArray = [];
     for(let key in obj){
         returnArray.push(key);
@@ -7,6 +16,7 @@ const keys = function keys(obj){
 }
 
 const values = function values(obj){
+    isValidObj(obj);
     const returnArray = [];
     for(let key in obj){
         returnArray.push(obj[key]);
@@ -18,5 +28,6 @@ const values = function values(obj){
 module.exports = {
     keys,
     values,
-    
+    isValidObj,
+
 }

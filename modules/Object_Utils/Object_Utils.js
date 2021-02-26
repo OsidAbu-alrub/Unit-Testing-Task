@@ -34,13 +34,13 @@ const entries = function entries(obj){
     return returnArray;
 }
 
-const mayBe = function mayBe(obj,keyString){
+const mayBe = function mayBe(obj,keyString, fallBackVal = undefined){
     isValidObj(obj);
     const keyArray = keyString.split('.');
     let result = obj;
     for(let key of keyArray){
         if(!(key in result)){
-            return undefined;
+            return fallBackVal;
         }
         result = result[key];
     }

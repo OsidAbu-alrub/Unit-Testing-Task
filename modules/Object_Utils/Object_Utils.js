@@ -47,6 +47,13 @@ const mayBe = function mayBe(obj,keyString, fallBackVal = undefined){
     return result;
 }
 
+const pick = function pick(obj,path){
+    isValidObj(obj);
+    let result = {};
+    path.forEach((value) => { if(value in obj) result[value] = obj[value]; })
+    return result;
+}
+
 
 module.exports = {
     keys,
@@ -54,4 +61,5 @@ module.exports = {
     isValidObj,
     entries,
     mayBe,
+    pick
 }

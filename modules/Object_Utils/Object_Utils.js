@@ -54,6 +54,21 @@ const pick = function pick(obj,path){
     return result;
 }
 
+const omit = function omit(obj,path){
+    isValidObj(obj);
+    let avoid = {};
+    path.forEach((value) => { if(value in obj) avoid[value] = obj[value]; });
+
+    let result = {};
+    for(let key in obj)
+    {
+        if(!(key in avoid)){
+            result[key] = obj[key];
+        }
+    }
+    return result;
+}
+
 
 module.exports = {
     keys,
@@ -61,5 +76,6 @@ module.exports = {
     isValidObj,
     entries,
     mayBe,
-    pick
+    pick,
+    omit
 }

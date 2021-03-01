@@ -4,10 +4,6 @@ function isValidArgs(string){
     if((typeof string !== 'string')) throw new Error("Must pass a String as argument");
 }
 
-
-
-
-
 const upperCase = function upperCase(string = ""){
     isValidArgs(string);
 
@@ -44,6 +40,16 @@ const pascalCase = function pascalCase(string = ""){
     return returnStr;
 }
 
+const kebabCase = function kebabCase(string = ""){
+    isValidArgs(string);
+
+    const words = string.split(' ');
+    const returnStr = words.reduce((acc,word)=> acc += '-'+lowerCase(word) ,'');
+    return returnStr.substr(1);
+}
+
+
+
 
 
 
@@ -51,4 +57,5 @@ module.exports = {
     upperCase,
     lowerCase,
     pascalCase,
+    kebabCase,
 }

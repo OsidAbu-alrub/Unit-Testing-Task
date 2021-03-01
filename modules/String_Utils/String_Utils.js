@@ -21,7 +21,22 @@ const upperCase = function upperCase(string = ""){
 }
 
 
+const lowerCase = function lowerCase(string = ""){
+    isValidArgs(string);
+
+    let returnStr = '';
+    for(let char of string){
+        const ascii = char.charCodeAt(0);
+        if(ascii >= 65 && ascii <= 91) char = String.fromCharCode(ascii+32);
+        returnStr += char;
+    }
+    return returnStr;
+}
+
+
+
 
 module.exports = {
     upperCase,
+    lowerCase,
 }

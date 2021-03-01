@@ -20,7 +20,6 @@ const upperCase = function upperCase(string = ""){
     return returnStr;
 }
 
-
 const lowerCase = function lowerCase(string = ""){
     isValidArgs(string);
 
@@ -34,9 +33,22 @@ const lowerCase = function lowerCase(string = ""){
 }
 
 
+const pascalCase = function pascalCase(string = ""){
+    isValidArgs(string);
+
+    const words = string.split(' ');
+    const returnStr = words.map((word) =>{
+        return upperCase(word[0]) +  word.substr(1);
+    })
+    .join(" ");
+    return returnStr;
+}
+
+
 
 
 module.exports = {
     upperCase,
     lowerCase,
+    pascalCase,
 }
